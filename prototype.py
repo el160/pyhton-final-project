@@ -41,3 +41,22 @@ def analyze_water(ph, turbidity, contaminants):
     status = "safe" if not issues else "unsafe"
     return status, issues
 
+def recommend_purification_methods(issues):
+    """
+    Provides purification recommendations based on detected issues.
+    """
+    recommendations = []
+    for issue in issues:
+        if "pH" in issue:
+            recommendations.append("Use pH balancers eg buffer solutions.")
+        if "Turbidity" in issue:
+            recommendations.append("Filter water using cloth, sand, or advanced filtration methods.")
+        if "Contaminant" in issue:
+            recommendations.append("Use activated carbon filters or reverse osmosis.")
+    return recommendations
+
+def main():
+    print("=== Water Quality Tracker ===")
+    print("Input water quality parameters for assessment:")
+    
+   
