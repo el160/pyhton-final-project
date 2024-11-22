@@ -59,4 +59,28 @@ def main():
     print("=== Water Quality Tracker ===")
     print("Input water quality parameters for assessment:")
     
+     # Collect user inputs
+    ph_level = validate_input("Enter pH level  ")
+    turbidity = validate_input("Enter Turbidity level (NTU)  ")
+    contaminants = validate_input("Enter Contaminants level (ppm)  ")
+
+    # Analyze water quality
+    status, issues = analyze_water(ph_level, turbidity, contaminants)
+    print("\n=== Water Quality Report ===")
+    if status == "safe":
+        print(" Water is safe for drinking.")
+    else:
+        print(" Water is unsafe. Impurities detected:")
+        for issue in issues:
+            print(f"- {issue}")
+
+        # Provide purification recommendations
+        print("\nRecommended Actions:")
+        recommendations = recommend_purification_methods(issues)
+        for rec in recommendations:
+            print(f"- {rec}")
+
+if __name__ == "__main__":
+    main()
+
    
